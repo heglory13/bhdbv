@@ -1,0 +1,207 @@
+.why-choose {
+  width: 100%;
+  background: #ffffff;
+}
+
+/* ── Phần trên ── */
+.why-top {
+  padding: 20px 16px 56px;
+  text-align: center;
+}
+
+.why-eyebrow {
+  color: #1a6b2f;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  line-height: 1.8;
+}
+
+.why-heading {
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 900;
+  color: #0d2b14;
+  margin: 0 0 40px;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+/* Grid 5 cột */
+.why-reasons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.why-reason {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 20px;
+  position: relative;
+}
+
+/* Đường kẻ dọc ngăn cách */
+.why-reason:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 100px;
+  background: #e0ede4;
+}
+
+.why-reason-icon {
+  margin-bottom: 16px;
+}
+
+.why-reason-img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+
+.why-reason-icon-placeholder {
+  width: 110px;
+  height: 110px;
+  background: #f0faf4;
+  border-radius: 8px;
+  border: 2px dashed #b2dfc0;
+}
+
+.why-reason-title {
+  color: #0d2b14;
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+.why-reason-desc {
+  color: #6b8070;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Thanh stats xanh đậm ── */
+.why-stats {
+  background: #0d3d1f;
+  padding: 36px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  border-radius: 24px;
+  margin: 0 16px 0;
+}
+
+.why-stat {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 28px;
+  position: relative;
+}
+
+/* Đường kẻ dọc giữa stats */
+.why-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.why-stat-icon {
+  flex-shrink: 0;
+}
+
+.why-stat-text {
+  text-align: left;
+}
+
+.why-stat-number {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 900;
+  margin: 0 0 4px;
+  line-height: 1;
+}
+
+.why-stat-label {
+  color: #a8d5b5;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ── Banner stats ── */
+.why-stats-banner {
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.why-stats-banner-img {
+  width: 100%;
+  max-height: 140px;
+  display: block;
+  border-radius: 24px;
+  object-fit: cover;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .why-reasons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .why-reason:nth-child(3)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-reasons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .why-reason:nth-child(even)::after {
+    display: none;
+  }
+  .why-stats {
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 28px 20px;
+  }
+  .why-stat {
+    padding: 0 16px;
+  }
+  .why-stat:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .why-reasons {
+    grid-template-columns: 1fr;
+  }
+  .why-reason::after {
+    display: none;
+  }
+  .why-stats {
+    flex-direction: column;
+  }
+}

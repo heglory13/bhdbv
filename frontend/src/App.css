@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1a1a1a;
+  background: #fff;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+/* Banner wrapper: cho navbar absolute đè lên ảnh */
+.banner-wrapper {
+  position: relative;
+}

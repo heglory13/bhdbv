@@ -1,0 +1,187 @@
+.quote-form {
+  width: 100%;
+  background: transparent;
+  padding: 60px 16px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.quote-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  pointer-events: none;
+}
+
+.quote-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-content {
+  text-align: center;
+}
+
+.quote-eyebrow {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+
+.quote-heading {
+  color: #ffffff;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  margin: 0 0 48px;
+  line-height: 1.3;
+}
+
+.quote-form-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-select {
+  width: 100%;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0 48px 0 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #ffffff;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.form-select option {
+  color: #333333;
+  font-weight: 500;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666666;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.form-group:hover .select-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.quote-button {
+  height: 56px;
+  background: #27ae60;
+  border: 2px solid #27ae60;
+  border-radius: 12px;
+  padding: 0 32px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.quote-button:hover {
+  background: #ffffff;
+  color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.quote-button:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .quote-button {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quote-form {
+    padding: 48px 16px;
+  }
+  
+  .quote-form-wrapper {
+    padding: 24px 20px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .quote-button {
+    width: 100%;
+  }
+  
+  .quote-heading {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  .quote-form-wrapper {
+    padding: 20px 16px;
+  }
+  
+  .form-select {
+    height: 48px;
+    font-size: 15px;
+    padding: 0 40px 0 16px;
+  }
+  
+  .quote-button {
+    height: 48px;
+    font-size: 15px;
+  }
+}
