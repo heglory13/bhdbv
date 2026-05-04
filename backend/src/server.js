@@ -639,7 +639,25 @@ app.use((req, res) => {
   });
 });
 
+async function waitForDatabase(maxRetries = 10, delayMs = 3000) {
+  const db = require('./db');
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      await db.query('SELECT 1');
+      console.log('Database connection established.');
+      return;
+    } catch (error) {
+      console.log(`Database not ready (attempt ${attempt}/${maxRetries}): ${error.message}`);
+      if (attempt === maxRetries) {
+        throw new Error('Could not connect to database after multiple attempts.');
+      }
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+    }
+  }
+}
+
 async function startServer() {
+  await waitForDatabase();
   await ensureAdminUsersTable();
   await ensureDefaultAdminUser();
 
