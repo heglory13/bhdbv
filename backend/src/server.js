@@ -36,6 +36,7 @@ const {
   verifyAdminCredentials,
 } = require('./adminUsers');
 const { upload, uploadsDir } = require('./uploads');
+const db = require('./db');
 
 const app = express();
 const adminRouter = express.Router();
@@ -640,7 +641,6 @@ app.use((req, res) => {
 });
 
 async function waitForDatabase(maxRetries = 10, delayMs = 3000) {
-  const db = require('./db');
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       await db.query('SELECT 1');
@@ -656,9 +656,39 @@ async function waitForDatabase(maxRetries = 10, delayMs = 3000) {
   }
 }
 
+async function runInitSql() {
+  const fs = require('fs');
+  const initPath = path.join(__dirname, '..', 'database', 'init.sql');
+  if (!fs.existsSync(initPath)) {
+    console.log('No init.sql found, skipping.');
+    return;
+  }
+
+  // Check if tables already have data (skip seeding if so)
+  try {
+    const result = await db.query(
+      "SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'page_settings') AS exists"
+    );
+    if (result.rows[0]?.exists) {
+      const countResult = await db.query('SELECT COUNT(*)::int AS total FROM page_settings');
+      if (countResult.rows[0]?.total > 0) {
+        console.log('Database already seeded, skipping init.sql.');
+        return;
+      }
+    }
+  } catch (_err) {
+    // Table doesn't exist yet, proceed with init
+  }
+
+  const sql = fs.readFileSync(initPath, 'utf-8');
+  await db.query(sql);
+  console.log('Database initialized from init.sql.');
+}
+
 async function startServer() {
   await waitForDatabase();
   await ensureAdminUsersTable();
+  await runInitSql();
   await ensureDefaultAdminUser();
 
   app.listen(port, () => {
