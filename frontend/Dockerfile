@@ -18,9 +18,6 @@ FROM nginx:1.25-alpine
 
 RUN apk add --no-cache openssl
 
-# Create non-root user
-RUN addgroup -g 101 -S nginx && adduser -S nginx -u 101
-
 # Copy custom nginx config
 COPY --chown=nginx:nginx <<'EOF' /etc/nginx/conf.d/default.conf
 server {
