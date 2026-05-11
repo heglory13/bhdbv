@@ -399,7 +399,9 @@ async function createQuoteRequest(payload) {
         notes
       )
       VALUES ($1, $2, $3, $4, $5, $6)
-      RETURNING id, status, created_at
+      RETURNING id, insurance_type_slug, insurance_type_name,
+                license_plate_region_slug, license_plate_region_name,
+                customer_phone, notes, status, created_at
     `,
     [
       insuranceTypeResult.rows[0].slug,

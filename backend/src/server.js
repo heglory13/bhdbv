@@ -153,8 +153,21 @@ app.post('/api/quotes', async (req, res) => {
   try {
     const quote = await createQuoteRequest(validation.value);
 
+    // Map sang camelCase cho mailer
+    const quoteMapped = {
+      id: quote.id,
+      insuranceTypeName: quote.insurance_type_name,
+      insuranceTypeSlug: quote.insurance_type_slug,
+      licensePlateRegionName: quote.license_plate_region_name,
+      licensePlateRegionSlug: quote.license_plate_region_slug,
+      customerPhone: quote.customer_phone,
+      notes: quote.notes,
+      status: quote.status,
+      createdAt: quote.created_at,
+    };
+
     // Gửi email thông báo cho admin (không block response nếu lỗi)
-    sendQuoteNotification(quote).catch((err) =>
+    sendQuoteNotification(quoteMapped).catch((err) =>
       console.error('[Mailer] Lỗi gửi email thông báo:', err.message)
     );
 
