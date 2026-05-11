@@ -1,46 +1,11 @@
+import { ClipboardList, FileCheck, CreditCard, Users } from 'lucide-react';
 import './Process.css';
 
 const stepIcons = [
-  (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-      <rect x="8" y="8" width="32" height="32" rx="4" stroke="white" strokeWidth="2" fill="none"/>
-      <path d="M16 20 L32 20" stroke="white" strokeWidth="2"/>
-      <path d="M16 24 L28 24" stroke="white" strokeWidth="2"/>
-      <path d="M16 28 L24 28" stroke="white" strokeWidth="2"/>
-      <path d="M28 28 L32 32 L36 24" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-      <rect x="10" y="6" width="28" height="36" rx="3" stroke="white" strokeWidth="2" fill="none"/>
-      <path d="M16 16 L32 16" stroke="white" strokeWidth="2"/>
-      <path d="M16 22 L28 22" stroke="white" strokeWidth="2"/>
-      <path d="M16 28 L24 28" stroke="white" strokeWidth="2"/>
-      <circle cx="30" cy="30" r="6" fill="white"/>
-      <path d="M27 30 L29 32 L33 28" stroke="#1a6b2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-      <rect x="6" y="16" width="36" height="24" rx="4" stroke="white" strokeWidth="2" fill="none"/>
-      <path d="M6 24 L42 24" stroke="white" strokeWidth="2"/>
-      <circle cx="14" cy="32" r="2" fill="white"/>
-      <path d="M22 32 L34 32" stroke="white" strokeWidth="2"/>
-      <path d="M18 8 L18 16" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <path d="M24 8 L24 16" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <path d="M30 8 L30 16" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="20" r="8" stroke="white" strokeWidth="2" fill="none"/>
-      <path d="M12 36 C12 28 17 24 24 24 C31 24 36 28 36 36" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-      <circle cx="10" cy="18" r="5" stroke="white" strokeWidth="1.5" fill="none"/>
-      <circle cx="38" cy="18" r="5" stroke="white" strokeWidth="1.5" fill="none"/>
-      <path d="M6 34 C6 30 7 28 10 28" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-      <path d="M42 34 C42 30 41 28 38 28" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  ),
+  <ClipboardList size={36} strokeWidth={1.5} color="white" />,
+  <FileCheck    size={36} strokeWidth={1.5} color="white" />,
+  <CreditCard   size={36} strokeWidth={1.5} color="white" />,
+  <Users        size={36} strokeWidth={1.5} color="white" />,
 ];
 
 const Process = ({ content = { steps: [] } }) => (

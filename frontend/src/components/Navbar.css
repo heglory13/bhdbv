@@ -9,6 +9,10 @@
   transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
+.navbar-header--with-bar {
+  top: 36px;
+}
+
 .navbar-header--scrolled {
   padding: 10px 0;
   background: rgba(17, 73, 35, 0.96);
@@ -353,5 +357,98 @@
 
   .navbar-hamburger {
     display: flex;
+  }
+}
+
+/* ── Announcement Bar ── */
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  height: 36px;
+  background: linear-gradient(90deg, #0a2e14 0%, #1a6b2f 40%, #27ae60 70%, #1a6b2f 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.announcement-bar--hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.announcement-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marquee-scroll 22s linear infinite;
+  gap: 0;
+}
+
+.announcement-track:hover {
+  animation-play-state: paused;
+}
+
+.announcement-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 28px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.announcement-icon {
+  font-size: 14px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.announcement-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: color 0.2s;
+}
+
+.announcement-item:hover .announcement-text {
+  color: #a8ff78;
+}
+
+/* Highlight số điện thoại */
+.announcement-item:nth-child(2) .announcement-text,
+.announcement-item:nth-child(5) .announcement-text {
+  color: #a8ff78;
+}
+
+.announcement-sep {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  margin-left: 28px;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Điều chỉnh scroll-padding khi có bar */
+@media (max-width: 768px) {
+  .announcement-bar {
+    height: 32px;
+  }
+
+  .announcement-text {
+    font-size: 12px;
+  }
+
+  .navbar-header--with-bar {
+    top: 32px;
   }
 }

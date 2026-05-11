@@ -72,19 +72,20 @@
 }
 
 .social-link {
-  width: 44px;
-  height: 44px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 7px;
   color: white;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  padding: 0 14px;
+  transition: all 0.25s ease;
 }
 
 .social-link:hover {

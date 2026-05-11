@@ -37,6 +37,7 @@ const {
 } = require('./adminUsers');
 const { upload, uploadsDir } = require('./uploads');
 const db = require('./db');
+const { sendQuoteNotification } = require('./mailer');
 
 const app = express();
 const adminRouter = express.Router();
@@ -152,8 +153,13 @@ app.post('/api/quotes', async (req, res) => {
   try {
     const quote = await createQuoteRequest(validation.value);
 
+    // Gửi email thông báo cho admin (không block response nếu lỗi)
+    sendQuoteNotification(quote).catch((err) =>
+      console.error('[Mailer] Lỗi gửi email thông báo:', err.message)
+    );
+
     res.status(201).json({
-      message: 'Quote request recorded successfully. Our team will contact you soon.',
+      message: 'Yêu cầu báo giá đã được ghi nhận. Đội ngũ tư vấn sẽ liên hệ bạn sớm nhất!',
       data: quote,
     });
   } catch (error) {
