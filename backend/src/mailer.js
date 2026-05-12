@@ -160,7 +160,7 @@ async function sendQuoteNotification(quote) {
   `.trim();
 
   await transporter.sendMail({
-    from: `"DBV Insurance" <${process.env.MAIL_USER}>`,
+    from: `"DBV Insurance" <${process.env.MAIL_FROM || process.env.MAIL_USER}>`,
     to,
     subject: `[DBV] Yêu cầu báo giá mới — ${quote.insuranceTypeName} — SĐT: ${quote.customerPhone}`,
     html,
