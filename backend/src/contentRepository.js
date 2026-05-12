@@ -349,6 +349,8 @@ async function getHomeContent() {
     contactSupport: {
       zaloUrl: settings.contact_support?.zalo_url || 'https://zalo.me/0901234567',
       zaloLabel: settings.contact_support?.zalo_label || 'Chat with Zalo',
+      facebookUrl: settings.contact_support?.facebook_url || '',
+      youtubeUrl: settings.contact_support?.youtube_url || '',
       mapEmbedUrl:
         settings.contact_support?.map_embed_url ||
         'https://www.google.com/maps?q=Quan+1,+Ho+Chi+Minh+City&z=15&output=embed',

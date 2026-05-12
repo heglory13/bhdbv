@@ -54,9 +54,8 @@
 .admin-back-link,
 .admin-refresh,
 .admin-btn {
-  border: 0;
   border-radius: 18px;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .admin-tab {
@@ -68,14 +67,20 @@
   font-size: 15px;
   font-weight: 600;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 2px solid transparent;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 10px;
 }
 
-.admin-tab:hover,
+.admin-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f7fff6;
+}
+
 .admin-tab--active {
   background: linear-gradient(135deg, #d8f065 0%, #f4ffb5 100%);
   color: #102418;
-  box-shadow: 0 12px 28px rgba(216, 240, 101, 0.22);
+  border-color: #b8d400;
 }
 
 .admin-back-link {

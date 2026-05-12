@@ -12,6 +12,8 @@ const Footer = ({
   contactSupport = {
     zaloUrl: 'https://zalo.me/0901234567',
     zaloLabel: 'Chat Zalo với tư vấn viên',
+    facebookUrl: 'https://facebook.com',
+    youtubeUrl: 'https://youtube.com',
     mapEmbedUrl: 'https://www.google.com/maps?q=Quan+1,+Ho+Chi+Minh+City&z=15&output=embed',
     mapTitle: 'Bản đồ văn phòng DBV',
   },
@@ -31,11 +33,11 @@ const Footer = ({
           </div>
           <p className="footer-description">{content.description}</p>
           <div className="footer-social">
-            <a href="https://facebook.com" className="social-link" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <a href={contactSupport.facebookUrl || 'https://facebook.com'} className="social-link" target="_blank" rel="noreferrer" aria-label="Facebook">
               <Share2 size={16} strokeWidth={1.8} />
               <span>Facebook</span>
             </a>
-            <a href="https://youtube.com" className="social-link" target="_blank" rel="noreferrer" aria-label="YouTube">
+            <a href={contactSupport.youtubeUrl || 'https://youtube.com'} className="social-link" target="_blank" rel="noreferrer" aria-label="YouTube">
               <PlayCircle size={16} strokeWidth={1.8} />
               <span>YouTube</span>
             </a>

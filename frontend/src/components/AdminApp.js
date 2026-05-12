@@ -211,6 +211,8 @@ const DEFAULT_CONTACT_SETTINGS = {
   supportText: '',
   zaloUrl: '',
   zaloLabel: '',
+  facebookUrl: '',
+  youtubeUrl: '',
   mapEmbedUrl: '',
   mapTitle: '',
   phoneLabel: 'Hotline',
@@ -518,6 +520,8 @@ function AdminApp() {
         supportText: findSettingItem(pageSettings, 'banner', 'support_text')?.value_text || '',
         zaloUrl: findSettingItem(pageSettings, 'contact_support', 'zalo_url')?.value_text || '',
         zaloLabel: findSettingItem(pageSettings, 'contact_support', 'zalo_label')?.value_text || '',
+        facebookUrl: findSettingItem(pageSettings, 'contact_support', 'facebook_url')?.value_text || '',
+        youtubeUrl: findSettingItem(pageSettings, 'contact_support', 'youtube_url')?.value_text || '',
         mapEmbedUrl: findSettingItem(pageSettings, 'contact_support', 'map_embed_url')?.value_text || '',
         mapTitle: findSettingItem(pageSettings, 'contact_support', 'map_title')?.value_text || '',
         phoneLabel: findContactItem(contactInfos, 'phone')?.label || 'Hotline',
@@ -813,6 +817,8 @@ function AdminApp() {
         upsertPageSetting('banner', 'support_text', contactSettings.supportText),
         upsertPageSetting('contact_support', 'zalo_url', contactSettings.zaloUrl),
         upsertPageSetting('contact_support', 'zalo_label', contactSettings.zaloLabel),
+        upsertPageSetting('contact_support', 'facebook_url', contactSettings.facebookUrl),
+        upsertPageSetting('contact_support', 'youtube_url', contactSettings.youtubeUrl),
         upsertPageSetting('contact_support', 'map_embed_url', contactSettings.mapEmbedUrl),
         upsertPageSetting('contact_support', 'map_title', contactSettings.mapTitle),
         upsertContactInfo('phone', contactSettings.phoneLabel, contactSettings.phoneValue, 1),
@@ -1144,6 +1150,22 @@ function AdminApp() {
                 <input
                   value={contactSettings.zaloLabel}
                   onChange={(event) => setContactSettings((current) => ({ ...current, zaloLabel: event.target.value }))}
+                />
+              </label>
+              <label>
+                Link Facebook
+                <input
+                  placeholder="https://facebook.com/..."
+                  value={contactSettings.facebookUrl}
+                  onChange={(event) => setContactSettings((current) => ({ ...current, facebookUrl: event.target.value }))}
+                />
+              </label>
+              <label>
+                Link YouTube
+                <input
+                  placeholder="https://youtube.com/..."
+                  value={contactSettings.youtubeUrl}
+                  onChange={(event) => setContactSettings((current) => ({ ...current, youtubeUrl: event.target.value }))}
                 />
               </label>
               <label>
