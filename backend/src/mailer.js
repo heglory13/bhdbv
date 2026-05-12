@@ -9,8 +9,14 @@ function createTransporter() {
     return null;
   }
 
+  // Hỗ trợ Brevo SMTP (smtp-relay.brevo.com) và Gmail
+  const host = process.env.MAIL_HOST || 'smtp-relay.brevo.com';
+  const port = Number(process.env.MAIL_PORT || 587);
+
   return nodemailer.createTransport({
-    service: 'gmail',
+    host,
+    port,
+    secure: false,
     auth: { user, pass },
   });
 }
