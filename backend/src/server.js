@@ -44,15 +44,24 @@ const adminRouter = express.Router();
 const port = Number(process.env.PORT || 4000);
 
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'https://bhdbv.vn',
-    'https://www.bhdbv.vn',
-    process.env.CORS_ORIGIN,
-  ].filter(Boolean),
+  origin: function(origin, callback) {
+    // Cho phép requests không có origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    const allowed = [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'https://bhdbv.vn',
+      'https://www.bhdbv.vn',
+      process.env.CORS_ORIGIN,
+    ].filter(Boolean);
+    if (allowed.includes(origin)) return callback(null, true);
+    return callback(null, true); // Tạm thời cho phép tất cả để debug
+  },
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+app.options('*', cors()); // Handle preflight
 app.use(express.json());
 app.use('/uploads', express.static(uploadsDir));
 
