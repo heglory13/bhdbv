@@ -183,7 +183,7 @@ INSERT INTO page_settings (section_name, key_name, value_text) VALUES
   ('banner', 'support_text', 'Hỗ trợ 24/7 miễn phí'),
   ('contact_support', 'zalo_url', 'https://zalo.me/0901234567'),
   ('contact_support', 'zalo_label', 'Chat with Zalo'),
-  ('contact_support', 'map_embed_url', 'https://www.google.com/maps?q=Quan+1,+Ho+Chi+Minh+City&z=15&output=embed'),
+  ('contact_support', 'map_embed_url', 'https://maps.google.com/maps?q=Quan+1,+Ho+Chi+Minh+City&t=&z=15&ie=UTF8&iwloc=&output=embed'),
   ('contact_support', 'map_title', 'DBV office map'),
   ('footer', 'brand_name', 'DBV'),
   ('footer', 'brand_subtitle', 'Insurance'),
@@ -206,12 +206,10 @@ INSERT INTO insurance_types (slug, name, description, icon_key, display_order) V
   ('nha', 'Nhà Tư Nhân', 'Bảo vệ ngôi nhà và tài sản trước mọi rủi ro', 'nha', 6);
 
 INSERT INTO license_plate_regions (slug, name, prefixes, display_order) VALUES
-  ('hanoi', 'Hà Nội', '29, 30, 31, 32, 33, 40', 1),
+  ('mien-tay', 'Miền Tây', '60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75', 1),
   ('hcm', 'TP.HCM', '50, 51, 52, 53, 54, 55, 56, 57, 58, 59', 2),
-  ('danang', 'Đà Nẵng', '43', 3),
-  ('haiphong', 'Hải Phòng', '15, 16', 4),
-  ('cantho', 'Cần Thơ', '65', 5),
-  ('other', 'Tỉnh thành khác', 'Khác', 6);
+  ('mien-trung', 'Miền Trung', '36, 37, 38, 43, 47, 48, 49, 74, 75, 76, 77, 78, 79', 3),
+  ('mien-bac', 'Miền Bắc', '11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 40', 4);
 
 INSERT INTO why_choose_reasons (title, description, icon_key, display_order) VALUES
   ('Thương hiệu uy tín', 'Hơn 15 năm kinh nghiệm trong lĩnh vực bảo hiểm', 'why-1', 1),

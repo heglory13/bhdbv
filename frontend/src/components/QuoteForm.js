@@ -73,10 +73,10 @@ const QuoteForm = ({
                   className="form-select"
                   required
                 >
-                  <option value="">Biển số xe</option>
+                  <option value="">Chọn khu vực</option>
                   {quoteOptions.licensePlateRegions.map((item) => (
                     <option key={item.slug} value={item.slug}>
-                      {item.name} ({item.prefixes})
+                      {item.name}
                     </option>
                   ))}
                 </select>

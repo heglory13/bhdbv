@@ -675,6 +675,23 @@ async function waitForDatabase(maxRetries = 10, delayMs = 3000) {
   }
 }
 
+async function migrateRegions() {
+  // Kiểm tra xem đã có khu vực mới chưa
+  const check = await db.query("SELECT slug FROM license_plate_regions WHERE slug = 'mien-tay' LIMIT 1");
+  if (check.rowCount > 0) return; // Đã migrate rồi
+
+  console.log('Migrating license_plate_regions to new format...');
+  await db.query('DELETE FROM license_plate_regions');
+  await db.query(`
+    INSERT INTO license_plate_regions (slug, name, prefixes, display_order) VALUES
+      ('mien-tay', 'Miền Tây', '60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75', 1),
+      ('hcm', 'TP.HCM', '50, 51, 52, 53, 54, 55, 56, 57, 58, 59', 2),
+      ('mien-trung', 'Miền Trung', '36, 37, 38, 43, 47, 48, 49, 74, 75, 76, 77, 78, 79', 3),
+      ('mien-bac', 'Miền Bắc', '11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 40', 4)
+  `);
+  console.log('Regions migrated successfully.');
+}
+
 async function runInitSql() {
   const fs = require('fs');
   const initPath = path.join(__dirname, '..', 'database', 'init.sql');
@@ -693,6 +710,8 @@ async function runInitSql() {
       const val = countResult.rows[0]?.value_text || '';
       if (val.includes('TÍNH PHÍ')) {
         console.log('Database already seeded with correct data, skipping init.sql.');
+        // Chạy migration để cập nhật regions nếu cần
+        await migrateRegions();
         return;
       }
     }
