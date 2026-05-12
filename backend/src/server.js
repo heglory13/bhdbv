@@ -43,7 +43,16 @@ const app = express();
 const adminRouter = express.Router();
 const port = Number(process.env.PORT || 4000);
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://bhdbv.vn',
+    'https://www.bhdbv.vn',
+    process.env.CORS_ORIGIN,
+  ].filter(Boolean),
+  credentials: true,
+}));
 app.use(express.json());
 app.use('/uploads', express.static(uploadsDir));
 
